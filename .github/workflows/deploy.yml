@@ -14,10 +14,9 @@ jobs:
       - name: Build
         run: npm run build
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist
-          retention-days: 1
   deploy:
     needs: build
 
@@ -31,8 +30,6 @@ jobs:
 
     runs-on: ubuntu-latest
     steps:
-      - name: Download artifact
-        uses: actions/download-pages-artifact@v2
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
